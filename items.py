@@ -14,7 +14,9 @@ def combine_product_names(df_shopventory):
 
 def join_dfs(df_shopventory, df_lightspeed, variants=False):
     # joing dataframes on df_shopventory, preserving the item order
-    df_lightspeed.rename(columns={'Item': 'Product Name'}, inplace=True)
+    print("Lightspeed columns:")
+    print(df_lightspeed)
+    df_lightspeed = df_lightspeed.rename(columns={'Item': 'Product Name'})
     if variants is False:
         # df_shopventory.join(df_lightspeed, how='inner', left_on='Product Name', right_on='Item')
         df_shopventory_combined = df_shopventory.join(df_lightspeed.set_index('Product Name'), on='Product Name')

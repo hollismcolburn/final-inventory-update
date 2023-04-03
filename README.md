@@ -8,4 +8,4 @@ Steps to use:
 4. Save as "lightspeed_export.xlsx" and move to main folder
 5. In "shopventory_import.xlsx", find dividing index between items with and without variants
 6. Update "split_location" variable with dividing index (main.py, line 10)
-7. run main.py
+7. Run main.py

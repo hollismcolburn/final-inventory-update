@@ -1,5 +1,5 @@
 import pandas as pd
-import files, items
+import files, items, skus
 
 def main():
 
@@ -51,10 +51,10 @@ def main():
     items.drop_columns(df_shopventory, shopventory_columns_del)
     items.drop_columns(df_lightspeed, lightspeed_columns_del)
 
-    print("Lightspeed columns:")
-    print(df_lightspeed.columns)
-    print("Shopventory columns")
-    print(df_shopventory.columns)
+    # print("Lightspeed columns:")
+    # print(df_lightspeed.columns)
+    # print("Shopventory columns")
+    # print(df_shopventory.columns)
 
     # update this number with location of split
     split_location = 6471
@@ -76,6 +76,42 @@ def main():
     files.write_sheets(df_combined_with_variants, "items_with_variants_inv.xlsx")
     files.write_sheets(df_combined_without_variants, "items_without_variants_inv.xlsx")
     # files.write_sheets(df_stragglers, 'straggers.xlsx')
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    # df_new_skus = files.read_file("lightspeed_new_sku.xlsx", 0)
+    # df_shopventory = files.read_file("shopventory_import.xlsx", 1)
+
+    # lightspeed_columns_del = ['System ID', 'EAN', 'Custom SKU', 'Manufact. SKU',
+    #    'Qty.', ' Collage - Annex ', ' Collage Outlet ', 'Price', 'Tax', 'Brand',
+    #    'Publish to eCom', 'Season', 'Department', 'MSRP', 'Tax Class',
+    #    'Default Cost', 'Vendor', 'Category', 'Subcategory 1', 'Subcategory 2',
+    #    'Subcategory 3', 'Subcategory 4', 'Subcategory 5', 'Subcategory 6',
+    #    'Subcategory 7', 'Subcategory 8', 'Subcategory 9']
+    
+    # items.drop_columns(df_shopventory, shopventory_columns_del)
+    # items.drop_columns(df_new_skus, lightspeed_columns_del)
+
+    # # print("Lightspeed columns:")
+    # # print(df_new_skus.columns)
+    # # print("Shopventory columns")
+    # # print(df_shopventory.columns)
+
+    # print(df_new_skus)
+
+    # # df_new_skus = skus.drop_digits(df_new_skus)
+
+    # # print(df_new_skus)
+
+    # df_shopventory_with_variants, df_shopventory_without_variants = items.separate_items(df_shopventory, split_location)
+
+    # df_shopventory_with_variants_renamed = items.combine_product_names(df_shopventory_with_variants)
+
+    # df_combined_with_variants = items.join_dfs(df_shopventory_with_variants_renamed, df_new_skus, True)
+    # df_combined_without_variants = items.join_dfs(df_shopventory_without_variants, df_new_skus, False)
+
+    # files.write_sheets(df_combined_with_variants, "items_with_variants_skus.xlsx")
+    # files.write_sheets(df_combined_without_variants, "items_without_variants_skus.xlsx")
+
 
 if __name__ == "__main__":
     main()
